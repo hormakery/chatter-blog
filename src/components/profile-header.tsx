@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { signOut } from "firebase/auth";
 import logo from "../assets/chatter.png";
 import { FiSearch } from "react-icons/fi";
-import { FaRegStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase";
 import { useUser } from "../providers/user";
@@ -15,10 +14,8 @@ import { MdOutlinePublish } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { CgProfile, CgLogOut } from "react-icons/cg";
 import defaultAvatar from "../assets/profile-placeholder.jpg";
-import { IoMdNotificationsOutline, IoIosNotifications } from "react-icons/io";
 
 export const ProfileHeader = () => {
-  const notification = 0;
   const [visible, setVisible] = useState(true);
   const [navOpen, setNavOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
@@ -105,14 +102,6 @@ export const ProfileHeader = () => {
                 >
                   <FiSearch fontSize={"20px"} />
                 </Link>
-                {/* {pathname !== "/publish" && editPath !== "edit-post" && (
-                  <Link
-                    to="/publish"
-                    className="hover:opacity-75 font-medium flex items-center gap-2 lg:pl-5 lg:pr-5 cursor-pointer text-primaryColor rounded-full py-1.5 border border-1 mr-5"
-                  >
-                    <p className="text-sm">Write</p>
-                  </Link>
-                )} */}
               </div>
               <div className="group/parent hidden text-sm lg:flex items-center">
                 <div className=" hover:opacity-75 font-medium lg:pr-2 cursor-pointer  text-primaryBackground rounded-full">
@@ -171,30 +160,6 @@ export const ProfileHeader = () => {
                         description="View and update your profile"
                       >
                         <CgProfile className="mr-3 mt-1.5" fontSize={"30px"} />
-                      </DropdownItem>
-                      <DropdownItem
-                        title="Notifications"
-                        description="Stay updated"
-                        link={`/profile/${currentUser?.uid}`}
-                      >
-                        {notification > 0 ? (
-                          <IoIosNotifications
-                            fontSize={"30px"}
-                            className="mr-3 mt-1.5"
-                          />
-                        ) : (
-                          <IoMdNotificationsOutline
-                            fontSize={"30px"}
-                            className="mr-3 mt-1.5"
-                          />
-                        )}
-                      </DropdownItem>
-                      <DropdownItem
-                        title="Favorites"
-                        link={`/profile/${currentUser?.uid}`}
-                        description="View and manage your saved posts."
-                      >
-                        <FaRegStar className="mr-3 mt-1.5" fontSize={"30px"} />
                       </DropdownItem>
                       <SignOut>
                         <CgLogOut className="mr-3 mt-1.5" fontSize={"30px"} />

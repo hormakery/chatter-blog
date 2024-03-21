@@ -8,6 +8,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { PrimaryBtn } from "../../components/primary-btn";
 import { auth, db, provider } from "../../firebase/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { tags } from "../../data";
 
 export type SignInForm = {
   email: string;
@@ -31,9 +32,15 @@ export const SignIn = () => {
       const userDoc = await getDoc(ref);
 
       if (!userDoc.exists()) {
+        const interests = tags.map((tag) => ({
+          value: tag.color,
+          label: tag.title,
+        }));
+
         await setDoc(ref, {
           x: "",
           bio: "",
+          interests,
           linkedin: "",
           instagram: "",
           userId: newUser.uid,

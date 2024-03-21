@@ -107,7 +107,7 @@ body {
   .hero-title {
     font-size: 96px;
     letter-spacing: -0.06em;
-    line-height: 108%;
+    line-height: 108% !important;
   }
 }
 
